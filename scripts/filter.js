@@ -178,7 +178,7 @@ function init_threeScene(spec) {
 function main() {
   JEEFACEFILTERAPI.init({
     canvasId: "jeeFaceFilterCanvas",
-    NNCpath: "./jeeliz/NNClight.json", // root of NNC.json file
+    NNCpath: "./jeeliz/NNC.json", // root of NNC.json file
     callbackReady: function (errCode, spec) {
       if (errCode) {
         console.log("AN ERROR HAPPENS. SORRY BRO :( . ERR =", errCode);
