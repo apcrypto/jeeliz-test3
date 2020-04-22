@@ -3,8 +3,8 @@
 AFRAME.registerComponent("face-filter", {
   init: function () {
     // Solution for Getting Entities.
-    var sceneEl = this.el;
-    var bulb = sceneEl.querySelectorAll("a-gltf-model");
+    // var sceneEl = this.el;
+    // var bulb = sceneEl.querySelectorAll("a-gltf-model");
     // bulb[0].object3D.position.set(0, 0.202, 0);
     // bulb[0].object3D.rotation.set(0, 0, 0);
   },
@@ -248,11 +248,23 @@ function main() {
       var sceneEl = document.querySelector("a-scene");
       var bulb = sceneEl.querySelectorAll("a-gltf-model");
 
-      if (ISDETECTED && detectState.expressions > 0.999) {
+      if (ISDETECTED && detectState.expressions >= 0.99999) {
         bulb[0].object3D.position.set(-0.2, 0.002, 0);
+        console.log(detectState.expressions);
       } else {
         bulb[0].object3D.position.set(0, 2, 0);
       }
+
+      // if (ISDETECTED) {
+      //   console.log(detectState.expressions[0]);
+      //   let mouthOpening = (detectState.expressions[0] - 0.2) * 5.0;
+      //   mouthOpening = Math.min(Math.max(mouthOpening, 0), 1);
+      //   if (mouthOpening >= 0.999) {
+      //     // console.log("mouth open", mouthOpening);
+      //   } else {
+      //     // console.log("mouth closed");
+      //   }
+      // }
       // reinitialize the state of THREE.JS because JEEFACEFILTER have changed stuffs:
       THREERENDERER.state.reset();
 
