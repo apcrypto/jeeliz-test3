@@ -1,23 +1,23 @@
 // "use strict";
-
+// component
 AFRAME.registerComponent("face-filter", {
   init: function () {
     // Solution for Getting Entities.
     var sceneEl = this.el;
-    var glasses = sceneEl.querySelectorAll("a-gltf-model");
-    console.log(glasses);
-    console.log(this.el);
+    var bulb = sceneEl.querySelectorAll("a-gltf-model");
+    // bulb[0].object3D.position.set(0, 0.202, 0);
+    // bulb[0].object3D.rotation.set(0, 0, 0);
   },
 });
 
 // SETTINGS of this demo:
-const SETTINGS = {
+let SETTINGS = {
   rotationOffsetX: 0, // negative -> look upper. in radians
   cameraFOV: 40, // in degrees, 3D camera FOV
   pivotOffsetYZ: [0.2, 0.2], // XYZ of the distance between the center of the cube and the pivot
   detectionThreshold: 0.1, // sensibility, between 0 and 1. Less -> more sensitive
   detectionHysteresis: 0.1,
-  scale: 21, // scale of the 3D cube
+  scale: 10, // scale of the 3D cube
 };
 
 // some globalz:
@@ -242,8 +242,17 @@ function main() {
           detectState.rz,
           "XYZ"
         );
-      }
 
+        // console.log("detect state", detectState.expressions);
+      }
+      var sceneEl = document.querySelector("a-scene");
+      var bulb = sceneEl.querySelectorAll("a-gltf-model");
+
+      if (ISDETECTED && detectState.expressions > 0.999) {
+        bulb[0].object3D.position.set(-0.2, 0.002, 0);
+      } else {
+        bulb[0].object3D.position.set(0, 2, 0);
+      }
       // reinitialize the state of THREE.JS because JEEFACEFILTER have changed stuffs:
       THREERENDERER.state.reset();
 
