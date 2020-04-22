@@ -255,16 +255,6 @@ function main() {
         bulb[0].object3D.position.set(0, 2, 0);
       }
 
-      // if (ISDETECTED) {
-      //   console.log(detectState.expressions[0]);
-      //   let mouthOpening = (detectState.expressions[0] - 0.2) * 5.0;
-      //   mouthOpening = Math.min(Math.max(mouthOpening, 0), 1);
-      //   if (mouthOpening >= 0.999) {
-      //     // console.log("mouth open", mouthOpening);
-      //   } else {
-      //     // console.log("mouth closed");
-      //   }
-      // }
       // reinitialize the state of THREE.JS because JEEFACEFILTER have changed stuffs:
       THREERENDERER.state.reset();
 
