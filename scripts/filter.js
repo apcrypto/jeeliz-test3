@@ -249,7 +249,7 @@ function main() {
       var bulb = sceneEl.querySelectorAll("a-gltf-model");
 
       if (ISDETECTED && detectState.expressions >= 0.99999) {
-        bulb[0].object3D.position.set(-0.2, 0.002, 0);
+        bulb[0].object3D.position.set(-0.0, 0.002, 0);
         console.log(detectState.expressions);
       } else {
         bulb[0].object3D.position.set(0, 2, 0);
